@@ -37,6 +37,8 @@ quán trên desktop, tablet và mobile.
 - Hiển thị đánh giá người dùng
 - Responsive navigation và call-to-action
 - Hỗ trợ dark mode
+- Đăng ký, đăng nhập, chỉnh sửa hồ sơ và đăng xuất với dữ liệu lưu trong localStorage
+  (bản minh họa, không dùng cho xác thực thực tế)
 - Semantic HTML và accessibility
 
 ## Công nghệ sử dụng
@@ -98,6 +100,8 @@ desktop, tablet, and mobile devices.
 - Customer testimonials
 - Responsive navigation and call-to-action sections
 - Dark mode support
+- Demo registration, login, profile editing, and logout using browser
+  localStorage (not suitable for production authentication)
 - Semantic HTML and accessibility
 
 ## Technologies

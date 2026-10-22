@@ -40,6 +40,16 @@ body {
     transition-colors duration-300;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Component dùng chung */
 @layer components {
   /* 1. Layout & Wrapper (Dùng chung toàn bộ trang) */

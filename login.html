@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập / Đăng ký - BOOKLY</title>
+    <meta
+      name="description"
+      content="Đăng nhập hoặc tạo tài khoản BOOKLY để khám phá thế giới sách."
+    />
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+
+  <body>
+    <header class="site-header sticky top-0 z-50">
+      <nav
+        aria-label="Thanh điều hướng chính"
+        class="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between gap-4 px-5 py-4 lg:h-[85px] lg:px-5 lg:py-6"
+      >
+        <a
+          href="index.html"
+          aria-label="BOOKLY - Trang chủ"
+          class="flex h-9 shrink-0 items-center gap-3"
+        >
+          <img
+            src="assets/img/bookly-logo.png"
+            alt="BOOKLY"
+            class="h-9 w-auto object-contain"
+          />
+          <span class="font-body text-2xl font-semibold leading-9">BOOKLY</span>
+        </a>
+        <div data-auth-nav class="flex shrink-0 items-center gap-2 text-xs sm:text-sm"></div>
+      </nav>
+    </header>
+
+    <main class="section grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <section class="hidden lg:block">
+        <p class="eyebrow">Chào mừng đến với BOOKLY</p>
+        <h1 class="mt-4 text-4xl font-black leading-tight">
+          Mở ra thế giới mới qua từng trang sách
+        </h1>
+        <p class="mt-5 max-w-lg text-lg leading-8 text-ink/60">
+          Đăng nhập để tiếp tục hành trình đọc, hoặc tạo tài khoản để nhận gợi ý
+          sách phù hợp với sở thích của bạn.
+        </p>
+        <img
+          src="assets/img/hero-image.png"
+          alt="Khám phá và đọc sách trực tuyến cùng BOOKLY"
+          class="mt-8 w-full max-w-md object-contain"
+        />
+      </section>
+
+      <section
+        aria-label="Tài khoản BOOKLY"
+        class="card mx-auto w-full max-w-xl p-5 sm:p-8"
+      >
+        <p class="eyebrow">Tài khoản của bạn</p>
+        <h1 class="mt-2 text-2xl font-bold sm:text-3xl">Bắt đầu đọc sách</h1>
+        <p class="mt-2 text-sm text-ink/60">
+          Đăng nhập hoặc tạo tài khoản BOOKLY miễn phí.
+        </p>
+
+        <div
+          role="tablist"
+          aria-label="Chọn đăng nhập hoặc đăng ký"
+          class="mt-6 grid grid-cols-2 rounded-lg bg-line/30 p-1"
+        >
+          <button
+            id="login-tab"
+            type="button"
+            role="tab"
+            aria-controls="login-panel"
+            aria-selected="true"
+            class="rounded-md px-3 py-2 text-sm font-semibold transition-colors aria-selected:bg-brand-600 aria-selected:text-white"
+          >
+            Đăng nhập
+          </button>
+          <button
+            id="register-tab"
+            type="button"
+            role="tab"
+            aria-controls="register-panel"
+            aria-selected="false"
+            class="rounded-md px-3 py-2 text-sm font-semibold transition-colors aria-selected:bg-brand-600 aria-selected:text-white"
+          >
+            Đăng ký
+          </button>
+        </div>
+
+        <div id="login-panel" role="tabpanel" aria-labelledby="login-tab">
+          <form id="login-form" class="mt-6 space-y-4">
+            <div>
+              <label for="login-username" class="field-label"
+                >Tên người dùng</label
+              >
+              <input
+                id="login-username"
+                name="username"
+                type="text"
+                autocomplete="username"
+                class="field-input"
+                placeholder="Nhập tên người dùng"
+                aria-describedby="login-username-error"
+              />
+              <p id="login-username-error" class="field-error" data-error-for="username" aria-live="polite"></p>
+            </div>
+            <div>
+              <label for="login-password" class="field-label">Mật khẩu</label>
+              <input
+                id="login-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                class="field-input"
+                placeholder="Nhập mật khẩu"
+                aria-describedby="login-password-error"
+              />
+              <p id="login-password-error" class="field-error" data-error-for="password" aria-live="polite"></p>
+            </div>
+            <p
+              id="login-message"
+              class="min-h-5 text-sm"
+              role="alert"
+              aria-live="polite"
+            ></p>
+            <button type="submit" class="btn btn-primary w-full">
+              Đăng nhập
+            </button>
+            <p class="text-center text-sm text-ink/60">
+              Chưa có tài khoản?
+              <button
+                type="button"
+                data-show-register
+                class="font-semibold text-brand-700 hover:underline"
+              >
+                Đăng ký ngay
+              </button>
+            </p>
+          </form>
+        </div>
+
+        <div
+          id="register-panel"
+          role="tabpanel"
+          aria-labelledby="register-tab"
+          hidden
+        >
+          <form id="register-form" class="mt-6 space-y-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="register-username" class="field-label"
+                  >Tên người dùng <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">, bắt buộc</span></label
+                >
+                <input
+                  id="register-username"
+                  name="username"
+                  type="text"
+                  autocomplete="username"
+                  minlength="3"
+                  maxlength="30"
+                  class="field-input"
+                  placeholder="Ví dụ: minhanh"
+                  required
+                  aria-describedby="register-username-error"
+                />
+                <p id="register-username-error" class="field-error" data-error-for="username" aria-live="polite"></p>
+              </div>
+              <div>
+                <label for="register-password" class="field-label"
+                  >Mật khẩu <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">, bắt buộc</span></label
+                >
+                <input
+                  id="register-password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  class="field-input"
+                  placeholder="Ít nhất 8 ký tự"
+                  required
+                  aria-describedby="register-password-error"
+                />
+                <p id="register-password-error" class="field-error" data-error-for="password" aria-live="polite"></p>
+              </div>
+              <div>
+                <label for="full-name" class="field-label">Họ và tên <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">, bắt buộc</span></label>
+                <input
+                  id="full-name"
+                  name="fullName"
+                  type="text"
+                  autocomplete="name"
+                  class="field-input"
+                  placeholder="Nguyễn Minh Anh"
+                  required
+                  aria-describedby="register-fullName-error"
+                />
+                <p id="register-fullName-error" class="field-error" data-error-for="fullName" aria-live="polite"></p>
+              </div>
+              <div>
+                <label for="phone" class="field-label">Số điện thoại <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">, bắt buộc</span></label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  class="field-input"
+                  placeholder="090 123 4567"
+                  required
+                  aria-describedby="register-phone-error"
+                />
+                <p id="register-phone-error" class="field-error" data-error-for="phone" aria-live="polite"></p>
+              </div>
+              <div>
+                <label for="birth-date" class="field-label">Ngày sinh <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">, bắt buộc</span></label>
+                <input
+                  id="birth-date"
+                  name="birthDate"
+                  type="date"
+                  autocomplete="bday"
+                  class="field-input"
+                  required
+                  aria-describedby="register-birthDate-error"
+                />
+                <p id="register-birthDate-error" class="field-error" data-error-for="birthDate" aria-live="polite"></p>
+              </div>
+              <div>
+                <label for="address" class="field-label">Địa chỉ <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">, bắt buộc</span></label>
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  autocomplete="street-address"
+                  class="field-input"
+                  placeholder="Quận/Huyện, Tỉnh/Thành phố"
+                  required
+                  aria-describedby="register-address-error"
+                />
+                <p id="register-address-error" class="field-error" data-error-for="address" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <fieldset>
+              <legend class="field-label">Thể loại sách yêu thích <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">, bắt buộc</span></legend>
+              <div class="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="favoriteGenres"
+                    value="Văn học"
+                    class="accent-brand-600"
+                  />
+                  Văn học
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="favoriteGenres"
+                    value="Kinh doanh"
+                    class="accent-brand-600"
+                  />
+                  Kinh doanh
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="favoriteGenres"
+                    value="Kỹ năng sống"
+                    class="accent-brand-600"
+                  />
+                  Kỹ năng sống
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="favoriteGenres"
+                    value="Khoa học"
+                    class="accent-brand-600"
+                  />
+                  Khoa học
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="favoriteGenres"
+                    value="Thiếu nhi"
+                    class="accent-brand-600"
+                  />
+                  Thiếu nhi
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="favoriteGenres"
+                    value="Lịch sử"
+                    class="accent-brand-600"
+                  />
+                  Lịch sử
+                </label>
+              </div>
+              <p id="register-genres-error" class="field-error" data-error-for="favoriteGenres" aria-live="polite"></p>
+            </fieldset>
+
+            <p
+              id="register-message"
+              class="min-h-5 text-sm"
+              role="alert"
+              aria-live="polite"
+            ></p>
+            <button type="submit" class="btn btn-primary w-full">
+              Tạo tài khoản
+            </button>
+            <p class="text-center text-xs leading-5 text-ink/60">
+              Thông tin tài khoản được lưu trong bộ nhớ của trình duyệt này.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/auth.js?v=2" defer></script>
+  </body>
+</html>

@@ -16,21 +16,21 @@
     <header class="site-header sticky top-0 z-50">
       <nav
         aria-label="Thanh điều hướng chính"
-        class="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between gap-4 px-5 py-4 lg:h-[85px] lg:gap-8 lg:px-5 lg:py-6"
+        class="mx-auto flex min-h-[72px] w-full max-w-[1280px] flex-wrap items-center justify-between gap-2 px-5 py-4 sm:gap-4 lg:h-[85px] lg:flex-nowrap lg:gap-8 lg:px-5 lg:py-6"
       >
         <!-- Logo -->
         <a
           href="/"
           aria-label="BOOKLY - Trang chủ"
-          class="flex h-9 w-[155px] shrink-0 items-center gap-3"
+          class="flex h-9 w-auto shrink-0 items-center gap-1 sm:w-[155px] sm:gap-3"
         >
           <img
             src="assets/img/bookly-logo.png"
             alt="BOOKLY"
-            class="h-9 w-auto object-contain"
+            class="h-7 w-auto object-contain sm:h-9"
           />
 
-          <span class="font-body text-2xl font-semibold leading-9">
+          <span class="font-body text-xl font-semibold leading-9 sm:text-2xl">
             BOOKLY
           </span>
         </a>
@@ -101,18 +101,15 @@
           </li>
         </ul>
 
-        <!-- Register link -->
-        <a
-          href="pricing.html"
-          class="hidden font-body h-[37px] shrink-0 items-center justify-center rounded-lg bg-brand-600 px-3 text-sm font-medium leading-[21px] text-white transition-colors hover:bg-brand-700 lg:flex"
-        >
-          Đăng ký ngay
-        </a>
+        <div
+          data-auth-nav
+          class="flex shrink-0 items-center gap-2 text-xs sm:text-sm"
+        ></div>
 
         <!-- Hamburger button -->
         <button
           type="button"
-          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line lg:hidden"
+          class="hidden h-10 w-10 items-center justify-center rounded-lg border border-line sm:inline-flex lg:hidden"
           aria-label="Mở menu"
         >
           <span aria-hidden="true" class="text-xl">☰</span>
@@ -728,5 +725,6 @@
         </div>
       </div>
     </footer>
+    <script src="assets/js/auth.js?v=2" defer></script>
   </body>
 </html>
