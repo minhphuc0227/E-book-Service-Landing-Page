@@ -16,7 +16,8 @@ const saveUser = (user) => {
   const users = readUsers();
   if (
     users.some(
-      (account) => account.username.toLowerCase() === user.username.toLowerCase(),
+      (account) =>
+        account.username.toLowerCase() === user.username.toLowerCase(),
     )
   ) {
     return false;
@@ -67,8 +68,7 @@ const initializeNavigation = () => {
   nav.classList.add("relative");
   const logo = nav.querySelector('a[aria-label="BOOKLY - Trang chủ"]');
   if (logo) logo.href = "index.html";
-  let menu =
-    nav.querySelector("[data-site-nav]") || nav.querySelector("ul");
+  let menu = nav.querySelector("[data-site-nav]") || nav.querySelector("ul");
   if (!menu) {
     menu = document.createElement("ul");
     const authNav = nav.querySelector("[data-auth-nav]");
@@ -124,12 +124,14 @@ const initializeNavigation = () => {
   const indexPage = currentPage === "index.html";
   let activeKey = currentPage;
   if (currentPage === "profile.html") {
-    nav.querySelector('a[href="profile.html"]')?.classList.add(
-      "bg-brand-50",
-      "text-brand-700",
-      "dark:bg-brand-900",
-      "dark:text-white",
-    );
+    nav
+      .querySelector('a[href="profile.html"]')
+      ?.classList.add(
+        "bg-brand-50",
+        "text-brand-700",
+        "dark:bg-brand-900",
+        "dark:text-white",
+      );
     nav
       .querySelector('a[href="profile.html"]')
       ?.setAttribute("aria-current", "page");
@@ -145,7 +147,10 @@ const initializeNavigation = () => {
         (entries) => {
           const visible = entries
             .filter((entry) => entry.isIntersecting)
-            .sort((first, second) => second.intersectionRatio - first.intersectionRatio);
+            .sort(
+              (first, second) =>
+                second.intersectionRatio - first.intersectionRatio,
+            );
           if (visible[0]) setActiveSiteLink(menu, visible[0].target.id);
         },
         { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.25, 0.5] },
@@ -163,8 +168,7 @@ const renderAuthNavigation = () => {
   const username = localStorage.getItem(CURRENT_USER_KEY);
   const user = username
     ? readUsers().find(
-        (account) =>
-          account.username.toLowerCase() === username.toLowerCase(),
+        (account) => account.username.toLowerCase() === username.toLowerCase(),
       )
     : null;
 
@@ -307,7 +311,7 @@ const initializeLoginPage = () => {
     const password = loginForm.elements.namedItem("password").value;
     let valid = true;
     if (!username) {
-      showFieldError(loginForm, "username", "Vui lòng nhập email.");
+      showFieldError(loginForm, "username", "Vui lòng nhập tên người dùng.");
       valid = false;
     }
     if (!password) {
@@ -443,10 +447,12 @@ const initializeProfilePage = () => {
   fillForm(currentUser);
   form.noValidate = true;
   bindFieldErrorClearing(form);
-  document.querySelector("[data-reset-profile]").addEventListener("click", () => {
-    fillForm(currentUser);
-    showMessage(message, "Đã khôi phục thông tin đã lưu.", false);
-  });
+  document
+    .querySelector("[data-reset-profile]")
+    .addEventListener("click", () => {
+      fillForm(currentUser);
+      showMessage(message, "Đã khôi phục thông tin đã lưu.", false);
+    });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -460,7 +466,11 @@ const initializeProfilePage = () => {
     const username = formData.get("username").trim();
     const favoriteGenres = formData.getAll("favoriteGenres");
     if (username.length < 3) {
-      showFieldError(form, "username", "Tên người dùng phải có ít nhất 3 ký tự.");
+      showFieldError(
+        form,
+        "username",
+        "Tên người dùng phải có ít nhất 3 ký tự.",
+      );
       return;
     }
     if (!favoriteGenres.length) {
